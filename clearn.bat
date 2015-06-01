@@ -1,0 +1,11 @@
+del tsinghua_test.aux
+del tsinghua_test.bbl
+del tsinghua_test.blg
+del tsinghua_test.log
+del tsinghua_test.nav
+del tsinghua_test.out
+del tsinghua_test.run.xml
+del tsinghua_test.snm
+del tsinghua_test.synctex.*
+del tsinghua_test.toc
+del tsinghua_test-blx.bib

@@ -1,0 +1,111 @@
+﻿\documentclass[utf8]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,xcolor,multicol}
+\usepackage{graphicx,wrapfig,fancybox}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{beamerthemeTsinghua}
+\usepackage{fontspec}
+\setsansfont{宋体}
+
+\begin{document}
+
+
+\title{Tsinghua Beamer 大学}
+\author{Single Fermion}
+\institute{Tsinghua 大学}
+%\date{}
+
+\frame{
+\titlepage
+\begin{figure}[htpb]
+  \begin{center}
+	\includegraphics[width=0.2\linewidth]{Tsinghua_University_Logo.eps}
+  \end{center}
+\end{figure}
+}
+
+  \section*{Table Of Contents}
+  \frame {
+    \frametitle{\secname}
+    \tableofcontents
+  }
+
+  \AtBeginSubsection[] {
+  \frame<handout:0> {
+  \frametitle{Outline}
+  \tableofcontents[current,currentsubsection]
+    }
+  }
+
+  \section{Section I}
+
+  \subsection{Subsection I}
+
+  \frame{
+  %\frametitle{\subsecname~}
+  Itemize item, just items:
+    \begin{itemize}[<+-| alert@+>]
+    \item
+   item a
+    \item
+   item b
+    \item
+   item c
+    \item
+   item d
+    \end{itemize}
+  }
+
+  \subsection{Subsection II }
+  \frame{
+    %\frametitle{\subsecname~Goods}
+	The enumarate item:
+    \begin{enumerate}[<+-| alert@+>]
+    \item
+	 Item start with number
+    \item
+     This is item 2
+  \end{enumerate}
+  }
+
+  \section{section II}
+
+  \subsection{subsection I}
+
+\frame{
+  Description item:
+  \begin{description}%[<+-| alert@+>]
+  \item[description] Item starts with description.
+  \item[Fermion] This is item 2.
+  \end{description}
+}
+
+\subsection*{Thanks}
+
+\frame{
+  %\frametitle{\subsecname}
+  \begin{columns}
+  \column{3cm}
+  \column{4cm}
+    Thank you!
+  \column{3cm}
+  \end{columns}
+}
+
+
+\end{document}
+
+
+%\frame{
+%  %\frametitle{\subsecname~ frame b}
+%  \begin{itemize}[<+-| alert@+>]
+%  \item
+%  item a
+%  \end{itemize}
+%}
+%\begin{figure}
+%\includegraphics[height=10cm,width=12cm]{a3.eps}
+%\caption{}
+%\label{a3}
+%\end{figure}
+

@@ -1,0 +1,64 @@
+%\ProvidesPackageRCS $Header:/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemeTsinghua.sty
+
+\mode<presentation>
+
+\newif\ifbeamer@secheader
+\beamer@secheaderfalse
+
+%\DeclareOptionBeamer{secheader}{\beamer@secheadertrue}
+\ProcessOptionsBeamer
+
+%\usecolortheme{rose}
+%\useinnertheme[shadow]{rounded}
+%\usecolortheme{dolphin}
+%\useoutertheme{infolines}
+
+\useoutertheme[footline=authorinstitutetitle]{miniframes}
+\useinnertheme{rectangles}
+\usecolortheme{whale}
+\usecolortheme{orchid}
+
+%\useoutertheme{default}
+%\useinnertheme[shadow=true]{rounded}
+
+\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
+\setbeamercolor{frametitle}{bg=tsinghua,fg=white}
+\setbeamercolor{title}{fg=white,bg=tsinghua}
+\setbeamerfont{frametitle}{size=\large}
+\setbeamertemplate{navigation symbols}{}
+
+%% try
+\setbeamercolor{block title}{bg=tsinghua}
+\setbeamercolor{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=tsinghua text.bg!75!black}
+\setbeamercolor{fine separation line}{}
+\setbeamercolor{item projected}{fg=black}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{section in sidebar}{fg=brown}
+\setbeamercolor{section in sidebar shaded}{fg= grey}
+\setbeamercolor{separation line}{}
+\setbeamercolor{sidebar}{bg=tsinghua}
+\setbeamercolor{sidebar}{parent=palette primary}
+\setbeamercolor{structure}{fg=tsinghua}
+\setbeamercolor{subsection in sidebar}{fg=brown}
+\setbeamercolor{subsection in sidebar shaded}{fg=grey}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setbeamerfont{block title}{size={}}
+
+
+%\usesubitemizeitemtemplate{%
+    %\tiny\raise1.0pt\hbox{\color{beamerstructure}$\blacktriangleright$}%
+%}
+%\usesubsubitemizeitemtemplate{%
+    %\tiny\raise1.0pt\hbox{\color{beamerstructure}$\bigstar$}%
+%}
+
+%\setbeamersize{text margin left=1em,text margin right=1em}
+
+%\ifbeamer@secheader\else\setbeamertemplate{headline}[default]\fi
+
+\mode
+<all>
