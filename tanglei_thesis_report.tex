@@ -1,0 +1,127 @@
+\documentclass[UTF8, xcolor=table]{beamer}
+%\usepackage{fontspec}
+%\setsansfont{宋体}
+\usepackage[BoldFont,SlantFont]{xeCJK}
+\setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{SimSun}
+
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,xcolor,multicol}
+\usepackage{graphicx,wrapfig,fancybox}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{thubeamer}
+%\usepackage[backend=bibtex,style=IEEE,sorting=none]{biblatex} % [参考文献格式](https://www.sharelatex.com/blog/2013/07/31/getting-started-with-biblatex.html)
+\usepackage[backend=bibtex,sorting=none]{biblatex} % [参考文献格式](https://www.sharelatex.com/blog/2013/07/31/getting-started-with-biblatex.html) %mac IEEE not found
+\usepackage{array}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage[caption=false,font=scriptsize]{subfig}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{animate}
+%\usepackage{times} %与上面的冲突，加上这个 粗体斜体就失效
+%\usepackage{mathptmx}
+
+
+\defbibheading{bibliography}[\bibname]{} %avoid printbibliography 自动生成目录
+\addbibresource{ref/papers-bib-in-google.bib}
+\addbibresource{ref/chinese-ref.bib}
+%\setbeamertemplate{bibliography item}{\insertbiblabel} %将列表中默认的丑陋的icon 改成数字,或者下面这个也行
+\setbeamertemplate{bibliography item}[text] % [ref](http://tex.stackexchange.com/questions/68080/beamer-bibliography-icon)
+%\setbeamertemplate{footline}[frame number]{}
+
+%\setframeofframes{of}
+
+\usepackage{boxedminipage} %for: bvh border
+\def\fourgraphicswidth{0.35} %0.3\textwidth
+
+\usepackage{algorithm} %%format of the algorithm
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}} %%Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{输出:}} %%UseOutput in the format of Algorithm
+%\algrenewcommand{\algorithmiccomment}[1]{\hskip3em $\rightarrow$ #1}
+\algrenewcommand{\algorithmiccomment}[1]{ $//$ #1}
+
+\usepackage{listings}
+\renewcommand\lstlistingname{代码}
+\renewcommand\lstlistlistingname{代码}
+
+\lstset{framexleftmargin=1.4em,
+        xleftmargin=1.8em,
+        basicstyle=\ttfamily\small,
+        %frame=shadowbox, numberstyle=\tiny, breaklines=true,
+        frame=single,
+        numberstyle=\tiny, breaklines=true,
+        keywordstyle=\color{blue!70}\bfseries,
+        %commentstyle=\color{red!50!green!50!blue!50},
+        rulesepcolor=\color{red!20!green!20!blue!20},
+        numbers=none,fontadjust=true}
+\lstdefinelanguage{shader}{morekeywords={uniform, layout, uniform, vec2, vec3, vec4, in, out, gl_Position, dot, flat, int ,float, gl_VertexID, xyz, w, x, y, z, location, version, sampler2DRect, bgr, gl_FragData, texture2DRect, gl_TexCoord,for,xy},morecomment=[l]{//}}
+
+%\setbeameroption{show notes} %un-comment to see the notes
+
+%\usepackage{pgfpages}
+%\renewcommand\pgfsetupphysicalpagesizes{%
+%    \pdfpagewidth\pgfphysicalwidth\pdfpageheight\pgfphysicalheight%
+%}
+%\setbeameroption{show notes on second screen}
+
+\begin{document}
+
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamerfont{caption}{size=\scriptsize}
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{subsection in toc}{size=\footnotesize}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\graphicspath{{figures/}}
+
+\title{凸包围多面体生成算法及应用}
+%\author{唐磊}
+\author[唐磊]{(申请清华大学工学硕士学位论文答辩报告)\vskip 20pt学~~~~~~生：唐~~~~~磊~~~~~~~~\vskip 5pt 指导教师：雍~俊~海~教授}
+\institute[清华大学~软件学院~CG~\&~CAD~研究所]{\small \vskip 38pt计算机辅助设计图形学与可视化研究所}
+%\date{2015-06-07}
+\date{\small \vskip -17pt二〇一五年六月}
+%\date{\today}
+
+
+
+\frame{
+\vspace{-15mm}
+\titlepage
+\vspace{-43mm}
+\begin{figure}[htbp]
+  \begin{center}
+	\includegraphics[width=0.16\linewidth]{Tsinghua_University_Logo.eps}
+  \end{center}
+\end{figure}
+%\beign{picture}(1,1)
+%\put(6,8){\includegraphics[width=0.15\linewidth]{Tsinghua_University_Logo.eps}}
+%\end{picture}
+}
+
+  \section*{目录}
+  \frame {
+    \frametitle{\secname}
+   % \begin{multicols}{2}
+    \tableofcontents[sections={<1-5>}]
+  %\end{multicols}
+    \note{
+      我将按照下面如下的次序来介绍本人的工作，首先是课题背景和相关工作，然后介绍凸包围体生成算法和基于凸包围体的碰撞检测算法，最后进行总结。
+    }
+  }
+
+  \AtBeginSubsection[] {
+  \frame<handout:0> {
+  \frametitle{目录}
+  \tableofcontents[current,currentsubsection,sections={<1-5>}]
+    }
+    \addtocounter{framenumber}{-1}  %目录页不计算页码
+  }
+
+  \include{ppt01}
+  \include{ppt04}
+
+\end{document}
+
